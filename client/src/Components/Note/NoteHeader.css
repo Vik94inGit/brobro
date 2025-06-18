@@ -1,0 +1,121 @@
+/* Diary chat component (partial, for context) */
+.diary-chat {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Note list (partial, for context) */
+.diary-chat > .note-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Chat header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+  border-bottom: 1px solid #ccc; /* Consistent with previous header */
+}
+
+/* Back button */
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  color: #6e654a; /* Match user-related color */
+  transition: color 0.2s ease;
+}
+
+.back-button:hover,
+.back-button:focus {
+  color: #5a523d; /* Darker shade for hover/focus */
+  outline: none;
+}
+
+/* Header title */
+.chat-header h2 {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1.25rem;
+  color: #333; /* Neutral color for readability */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chat-header {
+    padding: 0.75rem;
+  }
+
+  .back-button {
+    font-size: 1.3rem;
+    padding: 0.4rem;
+    margin-right: 0.75rem;
+  }
+
+  .chat-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .diary-chat > .note-list {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-header {
+    padding: 0.5rem;
+    border-radius: 0; /* Match .diary-chat mobile style */
+  }
+
+  .back-button {
+    font-size: 1.1rem;
+    padding: 0.3rem;
+    margin-right: 0.5rem;
+  }
+
+  .chat-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .diary-chat > .note-list {
+    padding: 0.5rem;
+  }
+}
+
+/* Responsive typography for body (for consistency) */
+body {
+  font-size: 16px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}

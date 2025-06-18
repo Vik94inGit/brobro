@@ -1,0 +1,48 @@
+.app {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  /* Ensure content takes full width on smaller screens */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px; /* Limit max width for larger screens */
+  margin: 0 auto; /* Center content */
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1; /* Allow main to grow and fill available space */
+}
+
+/* Responsive padding for smaller screens */
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem; /* Reduce padding on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1rem; /* Further reduce padding on mobile */
+  }
+}
+
+/* Responsive typography (example, adjust as needed) */
+body {
+  font-size: 16px; /* Base font size */
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Slightly smaller text on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px; /* Smaller text on mobile */
+  }
+}

@@ -1,0 +1,65 @@
+.app-header {
+  background-color: #6e654a;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  /* Ensure header stays at the top */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+/* Responsive header styles */
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 0.5rem; /* Further reduce padding on mobile */
+    font-size: 1rem; /* Smaller font size for mobile */
+  }
+}
+
+/* Responsive padding for main content */
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem;
+  }
+
+  .app-header {
+    padding: 0.5rem; /* Slightly reduce padding on tablets */
+    font-size: 1rem; /* Adjust font size for better fit */
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1rem;
+  }
+}
+
+/* Responsive typography for body */
+body {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}

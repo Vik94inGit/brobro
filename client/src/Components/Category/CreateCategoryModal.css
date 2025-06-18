@@ -1,0 +1,197 @@
+/* Diary chat component (partial, for color context) */
+.diary-chat {
+  background: #f5f5f5;
+  /* Other styles omitted */
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Slightly darker for contrast */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* Above .NoteInput (z-index: 1000) */
+  overflow-y: auto; /* Allow scrolling if modal is tall */
+  box-sizing: border-box;
+}
+
+/* Modal content */
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  margin: 1.5rem 0rem;
+  border-radius: 8px;
+  max-width: 500px; /* Slightly wider for flexibility */
+  width: 80%; /* Responsive width */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/* Modal input */
+.modal-content input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd; /* Neutral default */
+  border-radius: 4px;
+  margin: 1rem 0rem 0.5rem -0.5rem; /* Consistent margin */
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-content input:focus {
+  border-color: #2c3e50; /* Match .entry-input */
+  box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.2);
+}
+
+.modal-content input:invalid[required] {
+  border-color: #dc3545; /* Match .error */
+}
+
+/* Modal buttons */
+.modal-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.modal-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modal-buttons .btn-primary {
+  background-color: #2c3e50; /* Match .entry-input */
+  color: #fff;
+}
+
+.modal-buttons .btn-primary:hover,
+.modal-buttons .btn-primary:focus {
+  background-color: #34495e;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.modal-buttons .btn-primary:active {
+  transform: translateY(0);
+}
+
+.modal-buttons .btn-secondary {
+  background-color: #6c757d; /* Bootstrap secondary, match .no-categories */
+  color: #fff;
+}
+
+.modal-buttons .btn-secondary:hover,
+.modal-buttons .btn-secondary:focus {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.modal-buttons .btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .modal-content {
+    max-width: 450px;
+    padding: 1.25rem;
+  }
+
+  .modal-content input {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .modal-buttons button {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 400px;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .modal-content input {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+  }
+
+  .modal-buttons {
+    margin-top: 0.75rem;
+    gap: 0.4rem;
+  }
+
+  .modal-buttons button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    background: rgba(0, 0, 0, 0.6); /* Darker for mobile focus */
+  }
+
+  .modal-content {
+    max-width: 90%;
+    padding: 0.75rem;
+    border-radius: 6px;
+  }
+
+  .modal-content input {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.85rem;
+    margin: 0.4rem 0;
+    border-radius: 3px;
+  }
+
+  .modal-buttons {
+    margin-top: 0.5rem;
+    gap: 0.3rem;
+    flex-direction: column; /* Stack buttons on small screens */
+  }
+
+  .modal-buttons button {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 3px;
+    width: 100%; /* Full-width buttons */
+  }
+}
+
+/* Responsive typography for body */
+body {
+  font-size: 16px;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,58 @@
+/* Diary chat component (partial, for color context) */
+.diary-chat {
+  background: #f5f5f5;
+  /* Other styles omitted */
+}
+
+.category-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-create-button {
+  margin-inline: auto;
+  align-self: center;
+  background: #6e654a; /* Darker shade for button */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  width: 200px;
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+/* Categories container (replacing .category-grid) */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 8px;
+  background: #f5f5f5;
+  margin-top: 8px;
+}
+
+/* Loading, error, and no-categories states */
+.loading,
+.error,
+.no-categories {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #666;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.error {
+  color: #dc3545; /* Bootstrap danger */
+}
+
+.no-categories {
+  color: #6c757d; /* Bootstrap secondary */
+}

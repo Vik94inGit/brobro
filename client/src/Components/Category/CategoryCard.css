@@ -1,0 +1,114 @@
+/* Diary chat component (partial, for color context) */
+.diary-chat {
+  background: #f5f5f5;
+  /* Other styles omitted */
+}
+
+/* Category card */
+.category-card {
+  position: relative;
+
+  width: 200px;
+
+  border-radius: 12px;
+  padding: 3rem; /* Increased to match bigger container */
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  display: block;
+  z-index: 1;
+
+  .category-card.active {
+    z-index: 2000; /* Higher than other cards and dropdown */
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.category-card:focus {
+  outline: 3px solid #6e654a;
+  outline-offset: 3px;
+  transform: translateY(-5px);
+}
+
+/* Category icon */
+.category-icon {
+  width: 20rem; /* 40px, smaller than 3.125rem */
+  height: 20rem;
+}
+
+/* Category title */
+.category-title {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #2c3e50;
+  line-height: 1.4;
+}
+
+.menu-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.menu-button {
+  position: absolute;
+  color: white;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.menu-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  background: white;
+
+  z-index: 1500;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .category-card.active .dropdown-menu {
+    display: flex; /* Show when parent is active */
+  }
+
+  button {
+    background: #6e654a; /* Darker shade for button */
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    width: 80px;
+    padding: 8px;
+  }
+}
+
+/* Responsive adjustments */
+
+/* Responsive typography for body */

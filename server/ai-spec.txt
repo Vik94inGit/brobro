@@ -1,0 +1,18 @@
+create basic node.js server client, that supports work with two entitiess - note and category - note and category are in 1:n relation (note is in one category)
+
+create CRUD commands for each entity - separate controllers and dao
+
+use mongoDB as persistent storage
+
+use joi to validate use inputs
+
+notes should have
+- note - string (required)
+- date - dateTd of note - should not be in future (required)
+- category - id of category (required)
+
+
+category should have
+- name - required
+- imageId - id of image 
+- image url or null
