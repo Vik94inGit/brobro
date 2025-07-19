@@ -19,16 +19,10 @@ const Note = ({ id, content, created_at, categoryId, onNoteAction }) => {
     const newContent = prompt("Enter new note content:", content);
     if (newContent && newContent !== content) {
       try {
-        const updatedNote = await updateNote(
-          id,
-          categoryId,
-          newContent
-        );
-        console.log("Updated note from backend:", updatedNote);
+        const updatedNote = await updateNote(id, newContent); // Pass the ID and new content to updateNote in useNoteService
 
         onNoteAction({ type: "UPDATE_NOTE", payload: updatedNote });
       } catch (error) {
-        console.error("Failed to update note:", error);
         alert(`Failed to update note: ${error.message}`);
       }
     }

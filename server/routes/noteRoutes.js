@@ -23,8 +23,10 @@ const validateNoteMiddleware = (req, res, next) => {
 };
 
 const validateNoteUpdateMiddleware = (req, res, next) => {
+  //console.log(req.body);
   try {
     req.body = validateNoteUpdate(req.body);
+    console.log("req.body: " + req.body);
     next();
   } catch (error) {
     res.status(400).json({ error: error.message });

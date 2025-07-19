@@ -1,25 +1,15 @@
-const Joi = require("joi");
-
-const categorySchema = Joi.object({
-  name: Joi.string().trim().min(1).required(),
-  image: Joi.string()
-    .uri()
-    .pattern(/\.(jpeg|jpg|gif|png|webp)$/i)
-    .allow(null, "")
-    .messages({
-      "string.pattern.base":
-        "Image URL must point to a valid image file (jpeg, jpg, gif, png, webp)",
-      "string.uri": "Image must be a valid URL",
-    }),
-});
+const categorySchema = require("./schema").categoryInputSchema;
+//import validation schema
 
 function validateCategory(data) {
   const { error, value } = categorySchema.validate(data, {
-    abortEarly: false,
+    //here is validation but I dont remember where in code used this function
+    abortEarly: false, //all errors will be collected
   });
 
   if (error) {
     throw new Error(error.details.map((detail) => detail.message).join(", "));
+    //WRITING INFO FOR EVERY ERROR
   }
 
   return value;

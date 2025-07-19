@@ -1,18 +1,4 @@
-const Joi = require("joi");
-
-const categoryOutputSchema = Joi.object({
-  id: Joi.string().uuid().required(),
-  name: Joi.string()
-    .min(1)
-    .pattern(/^\S.*\S$/)
-    .required(),
-  image: Joi.string()
-    .pattern(/^https?:\/\/.*\.(jpeg|jpg|gif|png|webp)$/)
-    .required(),
-  pinned: Joi.boolean().required(),
-  last_used: Joi.string().isoDate().required(),
-  created_at: Joi.string().isoDate().required(),
-}).strict(); // additionalProperties: false
+const { categoryOutputSchema } = require("./schema");
 
 function validateCategoryOutput(category) {
   const { error, value } = categoryOutputSchema.validate(category, {

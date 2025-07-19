@@ -1,10 +1,10 @@
 const createNote = require("../abl/note/createNote");
-const getNoteById = require("../abl/note/getNoteById");
-const updateNote = require("../abl/note/updateNote");
-const deleteNote = require("../abl/note/deleteNote");
-const filterNotes = require("../abl/note/filterNotes");
+
+const deleteNoteAbl = require("../abl/note/deleteNoteAbl");
+const getNotesByDateRange = require("../abl/note/filterNotes");
 const getNotesByCategory = require("../abl/note/getNotesByCategory");
 const noteService = require("../daoMethods/noteService");
+const { validateNoteExistWithId } = require("../abl/note/validateNote");
 
 exports.getNotes = async (req, res) => {
   try {
@@ -31,7 +31,8 @@ exports.getNotes = async (req, res) => {
 exports.getNoteById = async (req, res) => {
   try {
     const { id } = req.params;
-    const note = await getNoteById(id);
+    console.log("Fetching note with ID:", id);
+    const note = await validateNoteExistWithId(id);
     res.json(note);
   } catch (error) {
     if (
@@ -67,7 +68,9 @@ exports.createNote = async (req, res) => {
 exports.updateNote = async (req, res) => {
   try {
     const { id } = req.params;
-    const note = await updateNote(id, req.body);
+    console.log("Backend received ID from URL:", id); // Add this log!
+    console.log("Backend received updates:", req.body); // Add this log!
+    const note = await noteService.updateNote(id, req.body);
     res.json(note);
   } catch (error) {
     if (
@@ -85,7 +88,7 @@ exports.updateNote = async (req, res) => {
 exports.deleteNote = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await deleteNote(id);
+    const result = await deleteNoteAbl(id);
     res.json({ success: result });
   } catch (error) {
     if (
@@ -130,12 +133,7 @@ exports.filterNotes = async (req, res) => {
       throw new Error("Invalid day format");
     }
 
-    const notes = await filterNotes.getNotesByDateRange(
-      year,
-      month,
-      day,
-      categoryId
-    );
+    const notes = await getNotesByDateRange(year, month, day, categoryId);
     res.json(notes);
   } catch (error) {
     if (

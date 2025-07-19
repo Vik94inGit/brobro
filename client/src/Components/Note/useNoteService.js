@@ -167,15 +167,15 @@ function useNoteService() {
   };
 
   // NEW: Added updateNote function
-  const updateNote = useCallback(async (noteId, categoryId, content) => {
+  const updateNote = useCallback(async (noteId, content) => {
+    // Update note logic
     try {
       setIsLoading(true);
       setError(null);
 
-      const url = `${config.API_URL}/notes/${noteId}`;
+      const url = `${config.API_URL}/notes/${noteId}`; // Use the noteId to construct the URL
       console.log("Updating note at URL:", url, {
         noteId,
-        categoryId,
         content,
       });
 
@@ -185,7 +185,7 @@ function useNoteService() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ category_id: categoryId, content }),
+        body: JSON.stringify({ content }), // Send the noteId and content in the body
       });
 
       if (!response.ok) {
@@ -327,7 +327,7 @@ function useNoteService() {
       }
 
       const data = await response.json();
-      if (data.success === true) {
+      if (response.ok || data.success) {
         return { id: noteId }; // Return a minimal object with the ID for the frontend to use
       }
       console.log("Unexpected response format:", data);

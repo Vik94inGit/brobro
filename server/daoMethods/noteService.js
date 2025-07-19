@@ -1,9 +1,8 @@
-const dataService = require("./dataService");
+const { readData, writeData, deleteData } = require("./dataService");
 const categoryService = require("./categoryService");
-const { validateNoteId } = require("../abl/note/validateNote");
 
 async function getNotes() {
-  return await dataService.readData("notes");
+  return await readData("notes");
 }
 
 async function validateNotesCategories() {
@@ -28,7 +27,7 @@ async function validateNotesCategories() {
         ...note,
         category_id: defaultCategoryId,
       };
-      await dataService.writeData("notes", updatedNote);
+      await writeData("notes", updatedNote);
     }
 
     return {
@@ -63,9 +62,8 @@ async function getNotesByDateRange(year, month, day, categoryId) {
 }
 
 async function getNoteById(id) {
-  const noteId = validateNoteId(id);
   const notes = await getNotes();
-  const note = notes.find((n) => Number(n.id) === noteId);
+  const note = notes.find((n) => Number(n.id) === Number(id));
 
   if (!note) {
     throw new Error("Note not found");
@@ -75,31 +73,28 @@ async function getNoteById(id) {
 }
 
 async function saveNote(note) {
-  await dataService.writeData("notes", note);
+  await writeData("notes", note);
 }
 
 async function updateNote(id, updates) {
   const note = await getNoteById(id);
+  //console.log("noteService.updateNote: Found note before update:", note); // This should show the note
   if (!note) {
     throw new Error("Note not found");
   }
-
+  console.log("noteService.updateNote: Found note before update:", note); // This should show the note
   const updatedNote = {
     ...note,
     ...updates,
   };
+  console.log("noteService.updateNote: Found note before update:", note); // This should show the note
+  await writeData("notes", updatedNote);
 
-  await saveNote(updatedNote);
   return updatedNote;
 }
 
 async function deleteNote(id) {
-  const note = await getNoteById(id);
-  if (!note) {
-    throw new Error("Note not found");
-  }
-
-  const deleted = await dataService.deleteData("notes", note.id);
+  const deleted = await deleteData("notes", id);
   if (!deleted) {
     throw new Error("Failed to delete note");
   }
